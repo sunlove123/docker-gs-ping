@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.19
+FROM redhat/ubi9-minimal:latest
+
+#Install latest golang
+wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz && rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
 
 # Set destination for COPY
 WORKDIR /app
