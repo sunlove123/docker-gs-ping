@@ -27,7 +27,7 @@ pipeline:
                     build:
                       type: branch
                       spec:
-                        branch: master
+                        branch: main
               - step:
                   identifier: gobuild
                   name: go_build
