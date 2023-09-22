@@ -44,33 +44,18 @@ pipeline:
                     command: go test -v ./...
                   timeout: ""
                   type: Run
-              - parallel:
-                  - step:
-                      identifier: dockerbuild
-                      name: docker_build
-                      spec:
-                        connectorRef: account.harnessImage
-                        image: plugins/docker
-                        settings:
-                          dry_run: "true"
-                          repo: hello/world
-                          tags: latest
-                      timeout: ""
-                      type: Plugin
-                  - step:
-                      type: Run
-                      name: List image before
-                      identifier: List_image_before
-                      spec:
-                        shell: Sh
-                        command: Docker images
               - step:
-                  type: Run
-                  name: List image after
-                  identifier: List_image_after
+                  identifier: dockerbuild
+                  name: docker_build
                   spec:
-                    shell: Sh
-                    command: Docker images
+                    connectorRef: account.harnessImage
+                    image: plugins/docker
+                    settings:
+                      dry_run: "true"
+                      repo: hello/world
+                      tags: latest
+                  timeout: ""
+                  type: Plugin
           platform:
             arch: Amd64
             os: Linux
