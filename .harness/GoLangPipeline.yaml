@@ -7,7 +7,6 @@ pipeline:
     ci:
       codebase:
         build: <+input>
-        connectorRef: account.Github_OAuth_1695291009490
         repoName: deenaboopathy/docker-gs-ping
   stages:
     - stage:
@@ -23,7 +22,7 @@ pipeline:
                   identifier: GitClone_1
                   spec:
                     connectorRef: DDGit
-                    repoName: deenaboopathy/docker-gs-ping
+                    repoName: docker-gs-ping
                     build:
                       type: branch
                       spec:
@@ -57,9 +56,9 @@ pipeline:
                   timeout: ""
                   type: Plugin
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
