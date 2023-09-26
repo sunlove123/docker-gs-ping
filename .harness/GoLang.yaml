@@ -8,6 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: GenericGit
+        timeout: 20m
         repoName: docker-gs-ping
         build: <+input>
   stages:
