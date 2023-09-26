@@ -1,0 +1,39 @@
+pipeline:
+  name: GoLang
+  identifier: GoLang
+  projectIdentifier: pythonpipelinesample
+  orgIdentifier: WiproPOC
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: GenericGit
+        repoName: docker-gs-ping
+        build: <+input>
+  stages:
+    - stage:
+        name: Imagepush
+        identifier: Imagepush
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8sDeligate
+              namespace: harness
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: dockerdeepak
+                    repo: dockerdeepak/harness-py-sample
+                    tags:
+                      - harness_go
