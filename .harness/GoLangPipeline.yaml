@@ -23,7 +23,7 @@ pipeline:
                   identifier: GitClone_1
                   spec:
                     connectorRef: DDGit
-                    repoName: docker-gs-ping
+                    repoName: deenaboopathy/docker-gs-ping
                     build:
                       type: branch
                       spec:
