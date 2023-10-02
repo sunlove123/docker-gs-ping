@@ -23,7 +23,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: k8sDeligate
-              namespace: harness
+              namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
